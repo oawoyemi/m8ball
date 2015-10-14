@@ -1,0 +1,12 @@
+{application, m8ball,
+ [
+  {description, ""},
+  {vsn, "1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]},
+  {mod, { m8ball_app, []}},
+  {env, []}
+ ]}.
