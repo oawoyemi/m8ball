@@ -1,15 +1,6 @@
 -module(m8ball_sup).
-
 -behaviour(supervisor).
-
-%% API
--export([start_link/0]).
-
-%% Supervisor callbacks
--export([init/1]).
-
-%% Helper macro for declaring children of supervisor
--define(CHILD(I, Type), {I, {I, start_link, []}, permanent, 5000, Type, [I]}).
+-export([start_link/0, init/1]).
 
 %% ===================================================================
 %% API functions
@@ -23,5 +14,11 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, { {one_for_one, 5, 10}, []} }.
-
+    {ok, { {one_for_one, 1, 10},
+    [{m8ball,
+      {m8ball_server, start_link, []},
+      permanent,
+      5000,
+      worker,
+      [m8ball_server]
+    }]}}.
