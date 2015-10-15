@@ -1,4 +1,4 @@
--module(m8ball_app).
+-module(m8ball).
 -behaviour(application).
 
 %% Application callbacks
